@@ -14,7 +14,7 @@ if is_gunicorn:
     import gevent.monkey
     gevent.monkey.patch_all()
 
-app = create_app(os.getenv('FLASK_CONFIG') or 'local')
+app = create_app()
 
 manager = Manager(app)
 

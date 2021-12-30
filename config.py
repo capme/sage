@@ -22,6 +22,14 @@ class Config:
         'app',
     ]
 
+    SQLALCHEMY_DATABASE_URI='mysql+pymysql://{}:{}@database/{}'.format(
+        os.getenv('MYSQL_ROOT_USER'),
+        os.getenv('MYSQL_ROOT_PASSWORD'),
+        os.getenv('MYSQL_DATABASE')
+    )
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
+    PROPAGATE_EXCEPTIONS=True
+
 
 class TestingConfig(Config):
     TESTING = True

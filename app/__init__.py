@@ -1,7 +1,8 @@
 import logging
 from flask import Flask
-
+from .db import db
 from config import config
+from flask_migrate import Migrate
 
 LOGGING_LEVEL = {
     'INFO': logging.INFO,
@@ -16,9 +17,13 @@ def handle_error(app, error):
     pass
 
 
-def create_app(config_name):
+def create_app(config_name="local"):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+
+    db.init_app(app)
+
+    migrate = Migrate(app, db)
 
     from .api import api_bp as api_blueprint
 
