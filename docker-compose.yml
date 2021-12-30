@@ -11,3 +11,24 @@ services:
       - "./:/app"
     env_file:
       - .env
+    networks:
+      - sage-network
+  database:
+    image: mysql:8
+    platform: linux/x86_64
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    volumes:
+      - "$PWD/mysql_data:/var/lib/mysql"
+    entrypoint:
+      - docker-entrypoint.sh
+      - mysqld
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    networks:
+      - sage-network
+networks:
+  sage-network:
+    name: sage-network
