@@ -21,3 +21,12 @@ gunicorn==20.1.0
 
 # Eventlet for async
 eventlet==0.33.0
+
+# for migrate
+Flask-Migrate==2.5.3
+
+# pymysql
+pymysql==1.0.2
+
+# cryptography
+cryptography==36.0.1
