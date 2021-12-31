@@ -18,6 +18,15 @@ depends_on = None
 
 
 def upgrade():
+    op.create_table('image',
+        sa.Column('id', sa.Integer(), nullable=False),
+        sa.Column('url', sa.Text(length=100000), nullable=True),
+        sa.PrimaryKeyConstraint('id'),
+        mysql_charset='utf8mb4',
+        mysql_collate='utf8mb4_0900_ai_ci',
+        mysql_engine='InnoDB'
+    )
+
     op.create_table('product',
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('name', sa.String(length=80), nullable=False),
@@ -35,3 +44,4 @@ def upgrade():
 
 def downgrade():
     op.drop_table('product')
+    op.drop_table('image')

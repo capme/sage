@@ -25,9 +25,6 @@ class Variant(Resource):
     @classmethod
     def post(cls):
         variant = variant_schema.load(request.get_json())
-        if variant.find_by_uri(variant.uri_check):
-            return {'msg': 'The data you are trying to add is already added.'}, 401
-
         variant.add_to_db()
         return {'msg': 'The variant has been created', 'variant_id': variant.id}, 201
 

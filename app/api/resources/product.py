@@ -25,9 +25,6 @@ class Product(Resource):
     @classmethod
     def post(cls):
         product = product_schema.load(request.get_json())
-        if product.find_by_uri(product.uri_check):
-            return {'msg': 'The data you are trying to add is already added.'}, 401
-
         product.add_to_db()
         return {'msg': 'The product has been created', 'product_id': product.id}, 201
 

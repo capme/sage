@@ -33,3 +33,6 @@ cryptography==36.0.1
 
 # flask marshmallow
 flask-marshmallow==0.13.0
+
+# marshmallow-sqlalchemy
+marshmallow-sqlalchemy==0.27.0
