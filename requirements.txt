@@ -30,3 +30,6 @@ pymysql==1.0.2
 
 # cryptography
 cryptography==36.0.1
+
+# flask marshmallow
+flask-marshmallow==0.13.0
