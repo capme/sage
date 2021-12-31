@@ -1,5 +1,6 @@
 from .resources.status import Status
 from app.api.resources.product import Product, Products
+from app.api.resources.variant import Variant, Variants
 
 
 def init_routes(api):
@@ -7,3 +8,5 @@ def init_routes(api):
     api.add_resource(Status, '/status')
     api.add_resource(Products, '/products')
     api.add_resource(Product, '/product/<int:_id>')
+    api.add_resource(Variants, '/variants')
+    api.add_resource(Variant, '/variant/<int:_id>')
