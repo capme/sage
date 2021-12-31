@@ -12,8 +12,8 @@ class VariantModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id', ondelete='SET NULL'))
     name = db.Column(db.String(80), nullable=False)
-    size = db.Column(db.String(80), nullable=False)  # not always integer for the size
-    color = db.Column(db.String(80), nullable=False)
+    size = db.Column(db.String(80))  # not always integer for the size
+    color = db.Column(db.String(80))
     images = db.Column(db.Text(100000))  # only PostgreSQL support for data type db.ARRAY in SQL Alchemy
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
