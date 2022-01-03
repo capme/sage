@@ -10,7 +10,7 @@ class VariantModel(db.Model):
     __table_args__ = ({'mysql_engine':'InnoDB', 'mysql_charset':'utf8mb4','mysql_collate':'utf8mb4_0900_ai_ci'}, )
 
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id', ondelete='SET NULL'))
+    product_id = db.Column(db.Integer)
     name = db.Column(db.String(80), nullable=False)
     size = db.Column(db.String(80))  # not always integer for the size
     color = db.Column(db.String(80))

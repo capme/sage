@@ -12,9 +12,14 @@ class ProductModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.Text(100000))
-    logo_id = db.Column(db.Integer, db.ForeignKey('image.id', ondelete='SET NULL'))
+    logo_id = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
+
+    def __init__(self, name, description, logo_id):
+        self.name = name
+        self.description = description
+        self.logo_id = logo_id
 
     def __repr__(self):
         return "<ProductModel {}>".format(self.name)
